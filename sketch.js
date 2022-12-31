@@ -1,3 +1,6 @@
+const EQUAL = 187;
+const MINUS = 189;
+
 let width_height;
 let lightX;
 let lightY;
@@ -26,7 +29,7 @@ angleBox.addEventListener("submit", (e) => {
 
 function setup() {
   width_height = windowHeight * 0.6;
-  lightX = lightY = width_height / 2;
+  lightX = lightY = windowHeight / 2;
   lineLen = lightX + width_height - 400;
 
   // createCanvas(windowHeight * 0.8, windowHeight * 0.8);
@@ -47,7 +50,13 @@ function mouseReleased(mouseEvent) {
 function keyPressed(keyEvent) {
   if (keyEvent.code == "KeyF") {
     walls.pop();
+  } else if (keyEvent.code == "Equal") {
+    lightViewPort < 360 ? lightViewPort++ : 0;
+  } else if (keyEvent.code == "Minus") {
+    lightViewPort > 0 ? lightViewPort-- : 0;
   }
+
+  console.log(keyEvent.code);
 }
 
 function draw() {
@@ -71,6 +80,8 @@ function draw() {
       ? (lightAngle += 1)
       : (lightX += 5)
     : 0;
+  keyIsDown(EQUAL) ? (lightViewPort < 360 ? lightViewPort++ : 0) : 0;
+  keyIsDown(MINUS) ? (lightViewPort > 0 ? lightViewPort-- : 0) : 0;
 
   background(0);
   fill(255, 255, 255, 255);
