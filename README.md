@@ -9,3 +9,4 @@ Some graphics stuff with rays
 - Equal - Increase light viewport angle
 - Minus - Decrease light viewport angle
 - Mouse click and drag - Create a wall between the pressing and releasing points
+- Hold Shift - Turn on the lights
