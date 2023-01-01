@@ -9,7 +9,7 @@ let lightAngle = -90;
 let walls = [];
 let newWall = [];
 
-let rayColor = "#a04030";
+let rayColor = "#ffffff";
 let colorBox = document.getElementById("color-input");
 colorBox.addEventListener("change", (e) => {
   // console.log(e.target.value);
@@ -60,6 +60,11 @@ function keyPressed(keyEvent) {
 }
 
 function draw() {
+  if (keyIsDown(SHIFT)) {
+    lightsOn(walls);
+    return;
+  }
+
   keyIsDown(UP_ARROW)
     ? keyIsDown(CONTROL)
       ? (lineLen += 2)
@@ -93,20 +98,14 @@ function draw() {
     let endY = lineLen * sin((i * Math.PI) / 180) + lightY;
     let { colPoint, doesCollide } = getCollisionPoint(endX, endY);
 
-    stroke("#ffffff40");
+    stroke(rayColor + "cc");
     line(lightX, lightY, colPoint.x, colPoint.y);
 
     if (doesCollide) {
-      stroke(rayColor);
+      stroke("#538C5F");
       point(colPoint.x, colPoint.y);
     }
   }
-
-  // strokeWeight(10);
-
-  // walls.forEach((wall, index) => {
-  //   line(wall[0][0], wall[0][1], wall[1][0], wall[1][1]);
-  // });
 
   stroke("#a040a0ff");
   circle(lightX, lightY, 6);
